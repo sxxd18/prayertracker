@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prayer Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Widget Wrapper -->
-  <div class="widget-wrapper">
-    <div id="prayer-widget-container">
-      <h1>Prayer Tracker</h1>
-      <div class="prayers">
-        <div class="prayer-item">
-          <input type="checkbox" id="fajr">
-          <label for="fajr">Fajr</label>
-        </div>
-        <div class="prayer-item">
-          <input type="checkbox" id="dhuhr">
-          <label for="dhuhr">Dhuhr</label>
-        </div>
-        <div class="prayer-item">
-          <input type="checkbox" id="asr">
-          <label for="asr">Asr</label>
-        </div>
-        <div class="prayer-item">
-          <input type="checkbox" id="maghrib">
-          <label for="maghrib">Maghrib</label>
-        </div>
-        <div class="prayer-item">
-          <input type="checkbox" id="isha">
-          <label for="isha">Isha</label>
-        </div>
+  <div class="tracker">
+    <h1>Today's Salah Tracker</h1>
+    <div class="prayers">
+      <div class="prayer">
+        <label for="fajr">Fajr</label>
+        <input type="checkbox" id="fajr" />
       </div>
-      <div class="streak">
-        Current Streak: <span id="streakCount">0</span>
+      <div class="prayer">
+        <label for="zuhr">Zuhr</label>
+        <input type="checkbox" id="zuhr" />
       </div>
+      <div class="prayer">
+        <label for="asr">Asr</label>
+        <input type="checkbox" id="asr" />
+      </div>
+      <div class="prayer">
+        <label for="maghrib">Maghrib</label>
+        <input type="checkbox" id="maghrib" />
+      </div>
+      <div class="prayer">
+        <label for="isha">Isha</label>
+        <input type="checkbox" id="isha" />
+      </div>
+    </div>
+    <div class="streak">
+      <img src="https://img.icons8.com/emoji/48/000000/fire.png" alt="Streak" />
+      <span id="streak">0</span>
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
