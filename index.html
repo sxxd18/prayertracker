@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prayer Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Widget Wrapper -->
+  <div class="widget-wrapper">
+    <div id="prayer-widget-container">
+      <h1>Prayer Tracker</h1>
+      <div class="prayers">
+        <div class="prayer-item">
+          <input type="checkbox" id="fajr">
+          <label for="fajr">Fajr</label>
+        </div>
+        <div class="prayer-item">
+          <input type="checkbox" id="dhuhr">
+          <label for="dhuhr">Dhuhr</label>
+        </div>
+        <div class="prayer-item">
+          <input type="checkbox" id="asr">
+          <label for="asr">Asr</label>
+        </div>
+        <div class="prayer-item">
+          <input type="checkbox" id="maghrib">
+          <label for="maghrib">Maghrib</label>
+        </div>
+        <div class="prayer-item">
+          <input type="checkbox" id="isha">
+          <label for="isha">Isha</label>
+        </div>
+      </div>
+      <div class="streak">
+        Current Streak: <span id="streakCount">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
