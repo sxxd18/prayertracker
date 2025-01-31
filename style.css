@@ -1,51 +1,75 @@
-/* Widget Wrapper */
-.widget-wrapper {
-  text-align: center;
-  margin: 20px auto;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+  margin: 0;
 }
 
-/* Prayer Widget Container */
-#prayer-widget-container {
-  width: 300px;
-  background: #424242;
-  color: #fff;
-  border-radius: 10px;
+.tracker {
+  background-color: #333;
+  border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  max-width: 600px;
 }
 
-/* Heading Style */
-#prayer-widget-container h1 {
-  font-size: 1.2em;
-  margin: 0 0 15px;
-  text-align: center;
+.tracker h1 {
+  font-size: 14px;
+  margin-bottom: 20px;
   color: #fff;
 }
 
-/* Prayer Items */
-.prayer-item {
+.prayers {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  margin: 8px 0;
+  margin-bottom: 20px;
 }
 
-.prayer-item input[type="checkbox"] {
-  margin-right: 10px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
-.prayer-item label {
-  flex: 1;
-}
-
-/* Streak Display */
-.streak {
+.prayer {
   text-align: center;
-  margin-top: 15px;
-  font-size: 1em;
-  color: #ff9800;
+}
+
+.prayer label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.prayer input[type="checkbox"] {
+  appearance: none;
+  border: 2px solid #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.prayer input[type="checkbox"]:checked {
+  background-color: #fff;
+  border-color: lightgray;
+}
+
+.prayer input[type="checkbox"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.streak {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.streak img {
+  width: 24px;
+  margin-right: 5px;
+}
+
+.streak span {
+  font-size: 18px;
 }
