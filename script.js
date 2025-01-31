@@ -1,60 +1,75 @@
-// Utility: Formats a Date object as "YYYY-MM-DD"
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = ('0' + (date.getMonth() + 1)).slice(-2);
-  const day = ('0' + date.getDate()).slice(-2);
-  return `${year}-${month}-${day}`;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+  margin: 0;
 }
 
-// Save the state (true/false) for a given prayer checkbox
-function savePrayerState(prayer, state) {
-  localStorage.setItem(`prayer_${prayer}`, state);
+.tracker {
+  background-color: #333;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  max-width: 600px;
 }
 
-// Retrieve the state for a given prayer checkbox (defaults to false if not set)
-function loadPrayerState(prayer) {
-  const stored = localStorage.getItem(`prayer_${prayer}`);
-  return stored === "true"; // Returns true if stored value is "true", else false
+.tracker h1 {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
-// Save the streak count
-function saveStreak(streak) {
-  localStorage.setItem("streak", streak);
+.prayers {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-// Load the streak count
-function loadStreak() {
-  const stored = localStorage.getItem("streak");
-  return stored ? parseInt(stored, 10) : 0;
+.prayer {
+  text-align: center;
 }
 
-// Initialize the prayer tracker
-function initPrayerTracker() {
-  const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
-  prayers.forEach((prayer) => {
-    const checkbox = document.getElementById(prayer);
-    if (checkbox) {
-      checkbox.checked = loadPrayerState(prayer);
-    }
-  });
-  document.getElementById("streakCount").textContent = loadStreak();
+.prayer label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
-// Attach event listeners to checkboxes
-function attachCheckboxListeners() {
-  const prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
-  prayers.forEach((prayer) => {
-    const checkbox = document.getElementById(prayer);
-    if (checkbox) {
-      checkbox.addEventListener("change", (e) => {
-        savePrayerState(prayer, e.target.checked);
-      });
-    }
-  });
+.prayer input[type="checkbox"] {
+  appearance: none;
+  border: 2px solid #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-// Initialize everything when the DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  initPrayerTracker();
-  attachCheckboxListeners();
-});
+.prayer input[type="checkbox"]:checked {
+  background-color: #fff;
+  border-color: lightgray;
+}
+
+.prayer input[type="checkbox"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.streak {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.streak img {
+  width: 24px;
+  margin-right: 5px;
+}
+
+.streak span {
+  font-size: 18px;
+}
