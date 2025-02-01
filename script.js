@@ -65,32 +65,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
   scheduleMidnightReset();
 
-  // Persistent Storage Button Logic with permanent flag.
+  // Persistent Storage Button Logic using navigator.storage.persist()
   const enableStorageButton = document.getElementById('enableStorage');
 
-  // If persistent storage has already been enabled, hide the button immediately.
-  if (localStorage.getItem('storageEnabled') === 'true') {
+  // If persistent storage was already enabled, hide the button immediately.
+  if (localStorage.getItem('persistentStorage') === 'enabled') {
     enableStorageButton.style.display = 'none';
   }
 
   if (enableStorageButton) {
-    enableStorageButton.addEventListener('click', function() {
-      if (document.hasStorageAccess) {
-        document.requestStorageAccess().then(function() {
-          console.log('Persistent storage access granted.');
-          // Set flag in localStorage so the button doesn't come back.
-          localStorage.setItem('storageEnabled', 'true');
-          // Animate the button away.
-          enableStorageButton.classList.add('fade-out');
-          setTimeout(function() {
-            enableStorageButton.style.display = 'none';
-          }, 400);
-        }).catch(function(err) {
-          console.error('Persistent storage access denied:', err);
-          alert('Unable to enable persistent storage. Please check your browser settings.');
-        });
+    enableStorageButton.addEventListener('click', async function () {
+      if (navigator.storage && navigator.storage.persist) {
+        try {
+          const isPersisted = await navigator.storage.persist();
+          if (isPersisted) {
+            console.log('Persistent storage is enabled.');
+            // Save flag so that the button doesn't come back.
+            localStorage.setItem('persistentStorage', 'enabled');
+            // Animate the button away.
+            enableStorageButton.classList.add('fade-out');
+            setTimeout(() => {
+              enableStorageButton.style.display = 'none';
+            }, 400);
+          } else {
+            console.log('Persistent storage request was not granted.');
+            alert('Persistent storage could not be enabled. Your data may be cleared by the browser.');
+          }
+        } catch (error) {
+          console.error('Error while requesting persistent storage:', error);
+          alert('An error occurred while requesting persistent storage.');
+        }
       } else {
-        console.log('Storage Access API not supported in this browser.');
+        console.log('Persistent Storage API is not supported in this browser.');
         enableStorageButton.style.display = 'none';
       }
     });
