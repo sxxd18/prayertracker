@@ -16,7 +16,7 @@ body {
 }
 
 .tracker h1 {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 20px;
   color: #fff;
 }
@@ -72,4 +72,26 @@ body {
 
 .streak span {
   font-size: 18px;
+}
+
+/* New button styling for persistent storage */
+#enableStorage {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  margin-top: 20px; /* leaves space below the streak */
+}
+
+#enableStorage:hover {
+  background-color: #666;
+}
+
+#enableStorage.fade-out {
+  opacity: 0;
+  transform: scale(0.9);
 }
