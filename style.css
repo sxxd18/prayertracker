@@ -74,7 +74,7 @@ body {
   font-size: 18px;
 }
 
-/* New button styling for persistent storage */
+/* Persistent storage button styling */
 #enableStorage {
   background-color: #555;
   color: #fff;
@@ -84,7 +84,7 @@ body {
   cursor: pointer;
   border-radius: 8px;
   transition: opacity 0.4s ease, transform 0.4s ease;
-  margin-top: 20px; /* leaves space below the streak */
+  margin-top: 20px;
 }
 
 #enableStorage:hover {
