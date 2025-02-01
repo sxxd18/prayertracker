@@ -65,14 +65,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   scheduleMidnightReset();
 
-  // Persistent Storage Button Logic
+  // Persistent Storage Button Logic with permanent flag.
   const enableStorageButton = document.getElementById('enableStorage');
+
+  // If persistent storage has already been enabled, hide the button immediately.
+  if (localStorage.getItem('storageEnabled') === 'true') {
+    enableStorageButton.style.display = 'none';
+  }
+
   if (enableStorageButton) {
     enableStorageButton.addEventListener('click', function() {
       if (document.hasStorageAccess) {
         document.requestStorageAccess().then(function() {
           console.log('Persistent storage access granted.');
-          // Animate the button away
+          // Set flag in localStorage so the button doesn't come back.
+          localStorage.setItem('storageEnabled', 'true');
+          // Animate the button away.
           enableStorageButton.classList.add('fade-out');
           setTimeout(function() {
             enableStorageButton.style.display = 'none';
