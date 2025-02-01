@@ -36,21 +36,6 @@
       <span id="streak">0</span>
     </div>
   </div>
-<button id="grantStorageAccess">Enable Persistent Storage</button>
-  <script src="script.js"> document.getElementById('grantStorageAccess').addEventListener('click', function() {
-      if (document.hasStorageAccess) {
-        document.requestStorageAccess()
-          .then(() => {
-            console.log('Storage access granted.');
-            // Optionally hide the button after access is granted.
-            document.getElementById('grantStorageAccess').style.display = 'none';
-          })
-          .catch(err => {
-            console.error('Storage access denied:', err);
-          });
-      } else {
-        console.log('Storage Access API not supported.');
-      }
-    });</script>
+  <script src="script.js"></script>
 </body>
 </html>
