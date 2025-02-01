@@ -1,19 +1,3 @@
- document.getElementById('grantStorageAccess').addEventListener('click', function() {
-      if (document.hasStorageAccess) {
-        document.requestStorageAccess()
-          .then(() => {
-            console.log('Storage access granted.');
-            // Optionally hide the button after access is granted.
-            document.getElementById('grantStorageAccess').style.display = 'none';
-          })
-          .catch(err => {
-            console.error('Storage access denied:', err);
-          });
-      } else {
-        console.log('Storage Access API not supported.');
-      }
-    });
-
 document.addEventListener("DOMContentLoaded", function () {
   const checkboxIds = ["fajr", "zuhr", "asr", "maghrib", "isha"];
   const todayDate = getTodayDate();
