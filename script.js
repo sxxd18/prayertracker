@@ -1,3 +1,17 @@
+// --- Begin Alert Override ---
+// This override removes any URLs from alert messages.
+(function() {
+  const originalAlert = window.alert;
+  window.alert = function(message) {
+    if (typeof message === 'string') {
+      // Remove any URLs from the message.
+      message = message.replace(/https?:\/\/\S+/g, '');
+    }
+    originalAlert(message);
+  };
+})();
+// --- End Alert Override ---
+
 document.addEventListener("DOMContentLoaded", function () {
   const checkboxIds = ["fajr", "zuhr", "asr", "maghrib", "isha"];
   const todayDate = getTodayDate();
