@@ -65,29 +65,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   scheduleMidnightReset();
 
-  // Function to reset tracker data for a new day.
-  function resetTrackerData() {
-    const allTicked = Object.values(trackerData.prayers).every(val => val === true);
-    trackerData.streak = allTicked ? trackerData.streak + 1 : 0;
-    trackerData.prayers = {
-      fajr: false,
-      zuhr: false,
-      asr: false,
-      maghrib: false,
-      isha: false,
-    };
-    trackerData.date = getTodayDate();
-    localStorage.setItem("prayerTracker", JSON.stringify(trackerData));
-
-    // Update the UI to reflect the reset.
-    checkboxIds.forEach(function (id) {
-      const checkbox = document.getElementById(id);
-      if (checkbox) {
-        checkbox.checked = false;
-        checkbox.disabled = false; // Re-enable checkboxes for the new day.
+  // Persistent Storage Button Logic
+  const enableStorageButton = document.getElementById('enableStorage');
+  if (enableStorageButton) {
+    enableStorageButton.addEventListener('click', function() {
+      if (document.hasStorageAccess) {
+        document.requestStorageAccess().then(function() {
+          console.log('Persistent storage access granted.');
+          // Animate the button away
+          enableStorageButton.classList.add('fade-out');
+          setTimeout(function() {
+            enableStorageButton.style.display = 'none';
+          }, 400);
+        }).catch(function(err) {
+          console.error('Persistent storage access denied:', err);
+          alert('Unable to enable persistent storage. Please check your browser settings.');
+        });
+      } else {
+        console.log('Storage Access API not supported in this browser.');
+        enableStorageButton.style.display = 'none';
       }
     });
-    document.getElementById("streak").textContent = trackerData.streak;
   }
 });
 
